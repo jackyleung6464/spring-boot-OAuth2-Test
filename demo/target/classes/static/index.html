@@ -1,0 +1,38 @@
+<html>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        
+           var login = function() {
+                console.log("click")
+                $.ajax({
+                	contentType: 'application/json',
+                    type: "POST",
+                    url: "/login2",
+                    dataType: "json",
+                    data: JSON.stringify({
+                        "name": $("#username").val() ,
+                        "password":$("#pw").val()
+                    }),
+                    complete: function(jqXHR, textStatus){
+                        console.log(jqXHR)
+                        console.log(textStatus)
+                        if(jqXHR.status == 200){
+                        	alert("success")
+                        } else alert("Fail");
+                    }
+                });
+
+                return true;
+            };
+
+      
+
+    </script>
+    <body>
+            <div>Username: <input type="text" name="username" id="username"/></div>
+            <div>Password: <input type="password" name="pw" id="pw"/></div>
+            </div><button onclick="login()" type="button">Login</button></div>
+    </body>
+    
+</html>
